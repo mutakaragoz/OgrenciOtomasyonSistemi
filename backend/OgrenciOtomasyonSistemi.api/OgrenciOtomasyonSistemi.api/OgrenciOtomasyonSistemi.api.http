@@ -1,0 +1,6 @@
+@OgrenciOtomasyonSistemi.api_HostAddress = http://localhost:5048
+
+GET {{OgrenciOtomasyonSistemi.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

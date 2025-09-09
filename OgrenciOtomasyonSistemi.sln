@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgrenciOtomasyonSistemi.api", "backend\OgrenciOtomasyonSistemi.api\OgrenciOtomasyonSistemi.api\OgrenciOtomasyonSistemi.api.csproj", "{570A7E4A-C763-7F8D-B57E-3EBF1861F46F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgrenciOtomasyonSistemi.web", "frontend\OgrenciOtomasyonSistemi.web\OgrenciOtomasyonSistemi.web\OgrenciOtomasyonSistemi.web.csproj", "{76DAAD9A-7EFA-D854-AC55-506A82F53321}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{570A7E4A-C763-7F8D-B57E-3EBF1861F46F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570A7E4A-C763-7F8D-B57E-3EBF1861F46F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570A7E4A-C763-7F8D-B57E-3EBF1861F46F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570A7E4A-C763-7F8D-B57E-3EBF1861F46F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76DAAD9A-7EFA-D854-AC55-506A82F53321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76DAAD9A-7EFA-D854-AC55-506A82F53321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76DAAD9A-7EFA-D854-AC55-506A82F53321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76DAAD9A-7EFA-D854-AC55-506A82F53321}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B21AD71F-6C16-47F7-A446-6C20573D5346}
+	EndGlobalSection
+EndGlobal
