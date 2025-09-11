@@ -6,7 +6,7 @@
 
         public string firstName { get; set; }
 
-        public int lastName { get; set; }
+        public string lastName { get; set; }
 
         public ICollection<Course> Courses { get; set; } = new List<Course>();
 
