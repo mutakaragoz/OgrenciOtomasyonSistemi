@@ -1,0 +1,74 @@
+﻿@page "/dashboard"
+
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Components.Authorization
+
+
+@attribute [Authorize]
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>Dashboard</h3>
+
+<AuthorizeView>
+    <Authorized>
+        <div class="alert alert-info">
+            Hoş geldiniz, <strong>@context.User.Identity?.Name!</strong>
+        </div>
+
+        @if (user?.IsInRole("Admin") ?? false)
+        {
+            <div class="card mt-3">
+                <div class="card-header">Admin Paneli</div>
+                <div class="card-body">
+                    <p>Tüm yönetimsel işlemleri gerçekleştirebilirsiniz.</p>
+                </div>
+            </div>
+        }
+        else if (user?.IsInRole("Teacher") ?? false)
+        {
+            <div class="card mt-3">
+                <div class="card-header">Öğretmen Paneli</div>
+                <div class="card-body">
+                    <p>Öğrencilerinizi ve derslerinizi yönetebilirsiniz.</p>
+                </div>
+            </div>
+        }
+        else if (user?.IsInRole("Student") ?? false)
+        {
+            <div class="card mt-3">
+                <div class="card-header">Öğrenci Paneli</div>
+                <div class="card-body">
+                    <p>Notlarınızı ve devamsızlık durumunuzu görüntüleyebilirsiniz.</p>
+                </div>
+            </div>
+        }
+    </Authorized>
+
+    <NotAuthorized>
+        <div class="alert alert-warning">
+            Bu içeriği görmek için lütfen giriş yapınız.
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private ClaimsPrincipal user;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        user = authState.User;
+    }
+}
+```
+
+### Yapılan Değişikliklerin Açıklaması:
+
+1.  **Eksik `using` Satırları Eklendi:**
+    ```csharp
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Components.Authorization
+

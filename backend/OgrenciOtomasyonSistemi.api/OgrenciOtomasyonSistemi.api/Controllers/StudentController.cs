@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
-    using OgrenciOtomasyonSistemi.api.DTOs;
+    using OgrenciOtomasyonSistemi.Shared.DTOs;
     using OgrenciOtomasyonSistemi.api.Entities;
     using static OgrenciOtomasyonSistemi.api.Data.AppDbContext;
     using Microsoft.AspNetCore.Authorization;
@@ -39,6 +39,35 @@
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetStudentById), new { id = student.id }, student);
+        }
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin,Teacher")]
+        public async Task<IActionResult> UpdateStudent(int id, [FromBody] UpdateStudentDto dto)
+        {
+            var studentInDb = await _context.Students.FindAsync(id);
+            if (studentInDb == null)
+            {
+                return NotFound();
+            }
+            studentInDb.firstName = dto.firstName;
+            studentInDb.lastName = dto.lastName;
+
+            await _context.SaveChangesAsync();
+            return NoContent(); 
+        }
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin,Teacher")]
+        public async Task<IActionResult> DeleteStudent(int id)
+        {
+            var studentInDb = await _context.Students.FindAsync(id);
+            if (studentInDb == null)
+            {
+                return NotFound();
+            }
+
+            _context.Students.Remove(studentInDb);
+            await _context.SaveChangesAsync();
+            return NoContent(); 
         }
     }
 }

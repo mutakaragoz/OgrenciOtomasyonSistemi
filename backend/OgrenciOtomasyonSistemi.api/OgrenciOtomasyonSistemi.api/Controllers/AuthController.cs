@@ -1,7 +1,7 @@
 ﻿namespace OgrenciOtomasyonSistemi.api.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using OgrenciOtomasyonSistemi.api.DTOs;
+    using OgrenciOtomasyonSistemi.Shared.DTOs;
     using OgrenciOtomasyonSistemi.api.Services;
     [ApiController]
     [Route("api/[controller]")]

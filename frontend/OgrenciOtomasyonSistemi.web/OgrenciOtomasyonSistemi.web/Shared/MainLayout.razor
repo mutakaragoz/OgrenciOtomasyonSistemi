@@ -1,0 +1,50 @@
+﻿@inherits LayoutComponentBase
+@inject ThemeService ThemeService
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+@implements IDisposable
+
+<div class="page @(ThemeService.IsDarkMode ? "dark-mode" : "")">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4 auth">
+            <AuthorizeView>
+                <Authorized>
+                    <span>Hoşgeldin, @context.User.Identity?.Name</span>
+                    <button class="btn btn-link" @onclick="Logout">Çıkış Yap</button>
+                </Authorized>
+                <NotAuthorized>
+                     <a href="login">Giriş Yap</a>
+                </NotAuthorized>
+            </AuthorizeView>
+            <button class="btn btn-sm btn-secondary ms-3" @onclick="ThemeService.ToggleTheme">
+                @(ThemeService.IsDarkMode ? "Light Mode" : "Dark Mode")
+            </button>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ThemeService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnChange -= StateHasChanged;
+    }
+    
+    private async Task Logout()
+    {
+        await AuthService.Logout();
+        Navigation.NavigateTo("/");
+    }
+}

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgrenciOtomasyonSistemi.api
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgrenciOtomasyonSistemi.web", "frontend\OgrenciOtomasyonSistemi.web\OgrenciOtomasyonSistemi.web\OgrenciOtomasyonSistemi.web.csproj", "{76DAAD9A-7EFA-D854-AC55-506A82F53321}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgrenciOtomasyonSistemi.Shared", "OgrenciOtomasyonSistemi.Shared\OgrenciOtomasyonSistemi.Shared.csproj", "{D6DAAF86-FC2E-4F33-864A-C288A487451A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{76DAAD9A-7EFA-D854-AC55-506A82F53321}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76DAAD9A-7EFA-D854-AC55-506A82F53321}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76DAAD9A-7EFA-D854-AC55-506A82F53321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6DAAF86-FC2E-4F33-864A-C288A487451A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6DAAF86-FC2E-4F33-864A-C288A487451A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6DAAF86-FC2E-4F33-864A-C288A487451A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6DAAF86-FC2E-4F33-864A-C288A487451A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

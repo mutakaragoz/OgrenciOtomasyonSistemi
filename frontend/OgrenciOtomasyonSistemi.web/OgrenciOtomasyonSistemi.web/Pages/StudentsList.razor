@@ -1,0 +1,85 @@
+﻿@page "/students"
+
+@using Microsoft.AspNetCore.Authorization
+@using OgrenciOtomasyonSistemi.web.Models
+@using System.Net.Http.Json
+
+@attribute [Authorize(Roles = "Admin, Teacher")]
+@inject HttpClient Http
+
+<h3>Öğrenci Listesi</h3>
+
+<div class="mb-3">
+    <input type="text" class="form-control" placeholder="Öğrenci ara (Ad, Soyad veya Numara)..." @bind="searchQuery" @bind:event="oninput" />
+</div>
+
+@if (filteredStudents == null)
+{
+    <p><em>Yükleniyor...</em></p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Öğrenci No</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in filteredStudents)
+            {
+                <tr>
+                    <td>@student.firstName</td>
+                    <td>@student.lastName</td>
+                    <td>@student.studentNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private string searchQuery = "";
+    private List<StudentDto>? allStudents;
+    private List<StudentDto>? filteredStudents;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            allStudents = await Http.GetFromJsonAsync<List<StudentDto>>("api/students");
+            FilterStudents();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Öğrenciler getirilirken hata oluştu: {ex.Message}");
+        }
+    }
+
+    private void FilterStudents()
+    {
+        if (allStudents is null)
+        {
+            filteredStudents = new List<StudentDto>();
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(searchQuery))
+        {
+            filteredStudents = allStudents;
+        }
+        else
+        {
+            var query = searchQuery.ToLowerInvariant();
+            filteredStudents = allStudents
+                .Where(s =>
+                    s.firstName.ToLowerInvariant().Contains(query) ||
+                    s.lastName.ToLowerInvariant().Contains(query) ||
+                    s.studentNumber.Contains(query))
+                .ToList();
+        }
+        StateHasChanged(); 
+    }
+}

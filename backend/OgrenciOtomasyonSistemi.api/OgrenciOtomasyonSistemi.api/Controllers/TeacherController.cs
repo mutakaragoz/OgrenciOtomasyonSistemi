@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using OgrenciOtomasyonSistemi.api.Data;
-    using OgrenciOtomasyonSistemi.api.DTOs;
+    using OgrenciOtomasyonSistemi.Shared.DTOs;
     using OgrenciOtomasyonSistemi.api.Entities;
     using static OgrenciOtomasyonSistemi.api.Data.AppDbContext;
 

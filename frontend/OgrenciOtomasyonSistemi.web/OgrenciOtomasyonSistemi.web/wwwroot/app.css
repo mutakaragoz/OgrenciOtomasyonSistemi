@@ -1,3 +1,42 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --card-background: #f9f9f9;
+    --border-color: #dee2e6;
+    --table-striped-bg: #f2f2f2;
+}
+
+.dark-mode {
+    --background-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --card-background: #2a2a2a;
+    --border-color: #444444;
+    --table-striped-bg: #2c3034;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card, .nav-menu, .table {
+    background-color: var(--card-background) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: var(--table-striped-bg);
+    color: var(--text-color);
+}
+
+.form-control {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
